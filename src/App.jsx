@@ -1,10 +1,15 @@
-import { useState } from 'react'
 import './App.css'
+import Header from './Components/Header/Header'
+import MovieList from './Components/MovieListFolder/MovieList'
 
 const App = () => {
-  <div className="App">
-    
-  </div>
+
+  return (
+    <div className="App">
+      <Header />
+      <MovieList />
+    </div>
+  )
 }
 
 export default App
