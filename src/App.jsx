@@ -2,8 +2,9 @@ import './App.css'
 import Header from './Components/Header/Header'
 import MovieList from './Components/MovieListFolder/MovieList'
 
-const App = () => {
 
+const App = () => {
+  
   return (
     <div className="App">
       <Header />
