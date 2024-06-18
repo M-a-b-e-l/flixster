@@ -18,8 +18,8 @@ Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
   - [x] For each movie displayed, users can see its title, poster image, and votes.
   - [x] Users can load more current movies by clicking a button at the bottom of the list (page should not be reloaded).
 - [ ] **Search Functionality**
-  - [ ] Users can search for movies and view the results in a grid.
-  - [ ] Users can clear results and view previous current movies displayed.
+  - [x] Users can search for movies and view the results in a grid.
+  - [x] Users can clear results and view previous current movies displayed.
 - [ ] **Accessibility Features**
   - [ ] Website implements accessibility features (semantic HTML, color contrast, font sizing, alt text for images).
 - [ ] **Responsive Design**

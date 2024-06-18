@@ -2,14 +2,14 @@ import './MovieCard.css'
 
 import PropTypes from 'prop-types';
 
-const MovieCard = (props) => {
+const MovieCard = ({image, title, rating, onClick}) => {
 
     return (
         <>
-            <div className='movie-card'>
-                    <img src={`https://image.tmdb.org/t/p/w500/${props.image}`} alt={props.title} />
-                    <h3>{props.title}</h3>
-                    <p>Rating: {props.rating}</p>
+            <div className='movie-card' onClick={onClick}>
+                    <img src={`https://image.tmdb.org/t/p/w500/${image}`} alt={title} />
+                    <h3>{title}</h3>
+                    <p>Rating: {rating}</p>
             </div>
         </>
     )
