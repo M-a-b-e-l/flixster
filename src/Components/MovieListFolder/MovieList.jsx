@@ -7,7 +7,7 @@ const MovieList = () => {
     //UseState variables for movies and page 
     const [movies, setMovies] = useState([]);
     const [page, setPage] = useState(1);
-    const [isSearching, setIsSearching] = useState(false);
+    const [sorting, setSorting] = useState('false');
 
     //Search variables 
     const [searchTerm, setSearchTerm] = useState("");
@@ -18,6 +18,10 @@ const MovieList = () => {
         //Fetch movies 
         let url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&page=${page}`; 
         // const apiKey = import.meta.env.VITE_API_KEY;
+
+        if(searchTerm.trim() !== "") {
+            url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&page=${page}&query=${searchTerm}`;
+        }
 
         //Set the movies to the data from the API
         async function fetchMovies() {
@@ -36,12 +40,15 @@ const MovieList = () => {
 
         fetchMovies();
 
-    }, [page, isSearching]);
+    }, [page, apiKey, searchTerm]);
 
     //Search fetch
     let SearchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&page=${page}&query=${searchTerm}`;
 
     async function fetchSearch () {
+        if(searchTerm.trim() === "") {
+            SearchUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&page=${page}`;
+        }
         const response = await fetch(SearchUrl);
         const data = await response.json();
 
@@ -57,19 +64,69 @@ const MovieList = () => {
         }
     }
 
+    let SortUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}`;
+    async function fetchSort () {
+        if(sorting === true) {
+            
+            const response = await fetch(SortUrl);
+            const data = await response.json();
+    
+            console.log(data.results);
+    
+            if(data.results && data.results.length > 0) {
+                setMovies(prevMovies => (
+                page === 1 ? data.results : [...prevMovies, ...data.results]));
+            } else { 
+                if (page === 1) {
+                    setMovies([]);
+                }
+            }
+        }
+
+        if(sorting == false) {
+            SearchUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&page=${page}`;
+        }
+    }
+    
+
     //Load more 
     const loadMoreFunction = () => {
         setPage(page => page + 1);
         
     };
 
-    // const set
+
+    const handleSortByName = () => {
+        setSorting('true');
+        fetchSort();
+        const sortedMovies = [...movies].sort((a, b) => a.title.localeCompare(b.title));
+        console.log(sortedMovies);
+        setMovies(sortedMovies);
+    };
+
+    const handleSortByDate = () => {
+        setSorting('true');
+        fetchSort();
+        const sortedMovies = [...movies].sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
+        setMovies(sortedMovies);
+    };
+
+    const handleSortByRating = () => {
+        setSorting('true');
+        fetchSort();
+        const sortedMovies = [...movies].sort((a, b) => b.vote_average - a.vote_average);
+        setMovies(sortedMovies);
+    };
 
     const handleSearch = () => {
         setPage(1); 
         console.log("in handle search");
         fetchSearch(); 
         
+    };
+
+    const handleSearchChange = (event) => {
+        setSearchTerm(event.target.value);
     };
 
     // Filtering Movies
@@ -80,25 +137,32 @@ const MovieList = () => {
     return (
         <>
             <div className='searchContainer'>
-                <input 
-                    type="text"
-                    placeholder='Search'
-                    value={searchTerm}
-                    onChange={(e) => {setSearchTerm(e.target.value)
-                        handleSearch();
+                <div className="dropdown">
+                    <button className="dropbtn">Sort By</button>
+                    <div className="dropdown-content">
+                        <a href="#" onClick={handleSortByName}>Alphabetically</a>
+                        <a href="#" onClick={handleSortByDate}>Release Date</a>
+                        <a href="#"onClick={handleSortByRating}>Rating</a>
+                    </div>
+                </div>
 
-                        if(e.target.value === "") {
-                            setIsSearching(false);
-                        } else { 
-                            setIsSearching(true);
-                        }
-                    }}
-                    className="searchBar" 
-                />
+                <div className='search-elements'>
+                    <input 
+                        type="text"
+                        placeholder='Search'
+                        value={searchTerm}
+                        onChange={handleSearchChange}
+                        className="searchBar" 
+                    />
 
-                <button className="searchButton" onClick={handleSearch}>
-                    <span className="material-symbols-outlined" >Search</span>
-                </button>
+                    <div>
+                        <button className="searchButton" onClick={handleSearch}>
+                            <span className="material-symbols-outlined" >Search</span>
+                        </button>
+                    </div>
+                    
+                </div>
+                
             </div>
 
             

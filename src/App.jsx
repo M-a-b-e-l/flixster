@@ -1,6 +1,7 @@
 import './App.css'
 import Header from './Components/Header/Header'
 import MovieList from './Components/MovieListFolder/MovieList'
+import Footer from './Components/Footer/Footer'
 
 
 const App = () => {
@@ -9,6 +10,7 @@ const App = () => {
     <div className="App">
       <Header />
       <MovieList />
+      <Footer />
     </div>
   )
 }

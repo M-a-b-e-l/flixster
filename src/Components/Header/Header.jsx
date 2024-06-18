@@ -3,9 +3,11 @@ import './Header.css'
 import NavBar from '../NavBar/NavBar'
 
 const Header = () => {
+    
+
     return (
         <>
-            <h1 className='headerTitle'>Flixster🍿</h1>
+            <h1 className='headerTitle'>🍿Flixster🥤</h1>
             <NavBar />
         </>
     )
