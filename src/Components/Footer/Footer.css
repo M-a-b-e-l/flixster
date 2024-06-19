@@ -1,12 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Flavors&display=swap');
+
 .footer-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
-    background-color: #f0f0f0;
-    height: 100px;
+    background-color: rgba(255, 255, 255, .2);
+    height: 100%;
     width: 100%;
     position: relative;
     bottom: 0;
     left: 0;
     z-index: 100;
+    overflow: hidden;
+    color: white;
+}
+
+.giphy-embed {
+    margin-top: 15px;
+}
+
+.footer-left h2 {
+    font-size: 30px;
+    font-family: "Flavors", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.footer-left p{
+    color: white;
+}
+
+.footer-left a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
 }

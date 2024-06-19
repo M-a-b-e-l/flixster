@@ -35,17 +35,18 @@
 /* Dropdownnn */
 .dropbtn {
     background-color: rgba(255, 255, 255, .2);
-    color: white;
+    color: #b1b1b1;
     font-weight: normal;
     padding: 16px;
-    font-size: 16px;
     border: none;
     border-radius: 8px;
     box-shadow: rgba(255, 255, 255, .2) 0 3px 5px -1px,rgba(255, 255, 255, .14) 0 2px 4px 0,rgba(255, 255, 255, .12) 0 1px 18px 0;
-    height: 45px;
+    height: 35px;
     width: 130px;
     margin-bottom: 0;
     text-align: center;
+    font-size: 13px; 
+    line-height: 0px;
 }
 
 .dropdown {
@@ -97,6 +98,8 @@
 
 }
 
+
+
 .searchButton {
     background-color: rgba(255, 255, 255, 0);
     color: #fff;
@@ -104,10 +107,6 @@
     
 }
 
-.searchButton span {
-    font-size: 35px;
-    margin-top: 7px;
-}
 
 .searchButton:hover {
     background-color: rgba(255, 255, 255, 0);
@@ -133,6 +132,10 @@
     text-align: center;
     background-color: rgba(255, 255, 255, .2);
     /* align-items: center; */
+}
+
+.searchBar::placeholder {
+    color: #b1b1b1;
 }
 
 .search-elements {

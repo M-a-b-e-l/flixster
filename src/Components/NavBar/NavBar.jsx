@@ -9,7 +9,7 @@ const NavBar = () => {
         <div>
             <nav className="navBar">
                 <ul>
-                    <a className = "nav-link nav-deco" href="#">Now Playing</a>
+                    <a className = "nav-link nav-deco">Now Playing</a>
                     {/* <a onClick="showBar()" className = "nav-link nav-deco" href="#">Search</a> */}
                     {/* <a href="#">Contact</a> */}
                 </ul>

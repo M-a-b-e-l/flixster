@@ -1,6 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Flavors&display=swap');
+
+
 .headerTitle {
     color: #fff;
     margin-top: 30px;
     margin-bottom: 0;
-    font-size: 45px;
+    font-size: 70px;
+    font-family: "Flavors", cursive;
+    font-weight: 400;
+    font-style: normal;
 }

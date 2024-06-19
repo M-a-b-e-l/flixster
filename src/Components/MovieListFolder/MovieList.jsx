@@ -11,6 +11,7 @@ const MovieList = () => {
 
     //Search variables 
     const [searchTerm, setSearchTerm] = useState("");
+    
     const [selectedMovie, setSelectedMovie] = useState(null);
     const apiKey = import.meta.env.VITE_API_KEY;
 
@@ -140,7 +141,7 @@ const MovieList = () => {
                 <div className="dropdown">
                     <button className="dropbtn">Sort By</button>
                     <div className="dropdown-content">
-                        <a href="#" onClick={handleSortByName}>Alphabetically</a>
+                        <a href="#" onClick={handleSortByName}>A-Z</a>
                         <a href="#" onClick={handleSortByDate}>Release Date</a>
                         <a href="#"onClick={handleSortByRating}>Rating</a>
                     </div>
@@ -157,7 +158,7 @@ const MovieList = () => {
 
                     <div>
                         <button className="searchButton" onClick={handleSearch}>
-                            <span className="material-symbols-outlined" >Search</span>
+                            <span className="material-symbols-outlined">Search</span>
                         </button>
                     </div>
                     
@@ -165,7 +166,6 @@ const MovieList = () => {
                 
             </div>
 
-            
 
             <div className='card-grid'>
                 {filteredMovies.map((movie, index) => (
@@ -195,9 +195,9 @@ const MovieList = () => {
                         alt={selectedMovie.title}
                         style={{width: "100%"}}
                     />
-                    <p>{selectedMovie.release_date}</p>
-                    {/* <p>{`https://api.themoviedb.org/3/genre/movie/list?language=en&api_key=${apiKey}`}</p> */}
-                    <p>{selectedMovie.overview}</p>
+                    <p><strong>Release Date:</strong> {selectedMovie.release_date}</p>
+                    <p><strong>Overview</strong><br></br>{selectedMovie.overview}</p>
+
                 </Modal>
             )}
         </> 
